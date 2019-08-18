@@ -31,12 +31,6 @@ const ProfileCard = ({
   </div>
 );
 
-// Counter receives a prop called `step` that determines how much to increment each time
-function Counter({ step }) {
-  const [count, setCount] = React.useState(0);
-  return <button onClick={() => setCount(count + step)}>Count: {count}</button>;
-}
-
 // ToggleCounter renders the counter if it is passed an `isOpen` prop
 // It only needs this one prop itself, and it needs to pass everything else
 // it's given straight down to Counter
