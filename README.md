@@ -1,17 +1,13 @@
 # Destructuring
 
-Destructuring is a cool new ES6 feature that gets used in React a lot.
-
-## Learn
-
-It's a way to pull values out of arrays or objects and assign them to variables. For example:
+Destructuring is a cool new ES6 feature that gets used in React a lot. It's a way to pull values out of arrays or objects and assign them to variables. For example:
 
 ```js
-const [first, second] = [1, 2];
-console.log(first, second); // 1 2
-
 const { name, surname } = { name: "Zooey", surname: "Miller" };
 console.log(name, surname); // "Zooey" "Miller"
+
+const [first, second] = [1, 2];
+console.log(first, second); // 1 2
 ```
 
 You can also grab nested values:
@@ -51,8 +47,6 @@ function calculateTotal({ subtotal, tax, tip }) {
 const total = calculateTotal({ tax: 0.2, subtotal: 100, tip: 10 });
 console.log(total); // 130
 ```
-
-See how we don't have to worry about the order we pass the parameters in? It also makes the function self-documenting and it's easier to remember what values you're passing when you call the function.
 
 React components similarly take a single argument (props), so this pattern is used a lot there:
 
