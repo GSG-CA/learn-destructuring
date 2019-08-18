@@ -7,7 +7,6 @@ import {
   calculateTotal,
   listVenues,
   ProfileCard,
-  Counter,
   ToggleCounter,
 } from './';
 
@@ -63,15 +62,6 @@ test('ProfileCard', () => {
   ReactDOM.render(<ProfileCard data={data} />, root);
   const image = root.querySelector('img');
   expect(image.src).toEqual('https://github.com/oliverjam.png');
-});
-
-test('Counter', () => {
-  const root = document.createElement('div');
-  ReactDOM.render(<Counter step={2} />, root);
-  const button = root.querySelector('button');
-  expect(button.textContent).toEqual('Count: 0');
-  TestUtils.Simulate.click(button);
-  expect(button.textContent).toEqual('Count: 2');
 });
 
 describe('ToggleCounter', () => {
