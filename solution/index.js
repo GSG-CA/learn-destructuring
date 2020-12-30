@@ -10,7 +10,7 @@ const getAttribution = ({ title, author, timestamp }) =>
   `${title} by ${author} @ ${timestamp}`;
 
 // calculateTotal receives a bill object { subtotal: number, tax: number, tip: number || undefined }
-// the tip might be undefined, in which case it should default to 0.1 (10%)
+// the tip might be undefined, in which case it should default to 10%
 const calculateTotal = ({ subtotal, tax, tip = 0.1 }) =>
   subtotal * (1 + tax) * (1 + tip);
 
@@ -21,8 +21,8 @@ const listVenues = ({ band, venues: [venue1, venue2, venue3] }) =>
 // ProfileCard receives a data object that contains a user { data: { user: { avatarSrc: string, username: string, githubUrl: string  } } }
 const ProfileCard = ({
   data: {
-    user: { avatarSrc, username, githubUrl }
-  }
+    user: { avatarSrc, username, githubUrl },
+  },
 }) => (
   <div>
     <img src={avatarSrc} />
@@ -32,10 +32,32 @@ const ProfileCard = ({
 );
 
 // ToggleCounter renders the counter if it is passed an `isOpen` prop
+// This prop should default to `true`
 // It only needs this one prop itself, and it needs to pass everything else
 // it's given straight down to Counter
 
+class Counter extends React.Component {
+  state = {
+    count: 0,
+  };
+  render() {
+    const { count } = this.state;
+    return (
+      <button
+        onClick={() => {
+          this.setState(({ count: prevCount }, { step }) => ({
+            count: prevCount + step,
+          }));
+        }}
+      >
+        Count: {count}
+      </button>
+    );
+  }
+}
+
 const ToggleCounter = ({ isOpen = true, ...restOfTheProps }) => {
+  console.log(isOpen, { ...restOfTheProps }, 22);
   return isOpen ? <Counter {...restOfTheProps} /> : <div>I'm closed</div>;
 };
 
@@ -45,6 +67,5 @@ export {
   calculateTotal,
   listVenues,
   ProfileCard,
-  Counter,
-  ToggleCounter
+  ToggleCounter,
 };
